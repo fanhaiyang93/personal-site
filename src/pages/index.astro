@@ -1,13 +1,41 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
 import SkillSection from '../components/SkillSection.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const allProjects = await getCollection('projects');
+const projects = allProjects.sort((a, b) => a.data.order - b.data.order);
 ---
 <BaseLayout title="范海洋 · 数仓架构师">
   <Nav />
   <main>
     <Hero />
     <SkillSection />
+    <section id="projects" class="py-20 px-6 border-t border-zinc-800">
+      <div class="mx-auto max-w-5xl">
+        <div class="font-mono text-accent text-sm tracking-widest mb-2">// 项目</div>
+        <h2 class="text-2xl font-bold text-white mb-10">项目经历</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {projects.map((project) => (
+            <ProjectCard
+              title={project.data.title}
+              id={project.id}
+              date={project.data.date}
+              company={project.data.company}
+              tags={project.data.tags}
+              summary={project.data.summary}
+              featured={project.data.featured}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+    <footer class="py-12 px-6 border-t border-zinc-800 text-center text-zinc-600 text-sm font-mono">
+      <p>fanhy93@163.com · 13611236008</p>
+      <p class="mt-1">© 2026 范海洋</p>
+    </footer>
   </main>
 </BaseLayout>
