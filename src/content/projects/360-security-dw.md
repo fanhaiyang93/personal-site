@@ -1,6 +1,5 @@
 ---
 title: 360·安全数据仓库建设
-slug: 360-security-dw
 date: "2018.07-2021.05"
 company: 360安全科技
 tags: [Hive, Spark, ClickHouse, 数仓建设]

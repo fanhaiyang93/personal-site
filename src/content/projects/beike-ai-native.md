@@ -1,6 +1,5 @@
 ---
 title: 贝壳·AI Native 数据开发工作方式
-slug: beike-ai-native
 date: "2024.03-至今"
 company: 贝壳找房
 tags: [AI Agent, MCP, Claude, Python, 工程化]

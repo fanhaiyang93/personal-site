@@ -1,6 +1,5 @@
 ---
 title: 贝壳·财务AI解读平台
-slug: beike-fin-ai-insight
 date: "2023.10-2024.06"
 company: 贝壳找房
 tags: [StarRocks, LLM, OLAP, AI, Python]

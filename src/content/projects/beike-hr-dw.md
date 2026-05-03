@@ -1,6 +1,5 @@
 ---
 title: 贝壳·人力主题域数仓
-slug: beike-hr-dw
 date: "2021.06-2022.10"
 company: 贝壳找房
 tags: [Hive, StarRocks, 维度建模, 数据治理]

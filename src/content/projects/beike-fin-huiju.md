@@ -1,6 +1,5 @@
 ---
 title: 贝壳·财务汇聚项目
-slug: beike-fin-huiju
 date: "2022.10-2023.09"
 company: 贝壳找房
 tags: [Hive, Spark, 数仓架构, 业财融合]
