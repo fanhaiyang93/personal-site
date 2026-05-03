@@ -1,0 +1,54 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { id: project.id.replace(/\.md$/, '') },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+---
+<BaseLayout title={`${project.data.title} · 范海洋`} description={project.data.summary}>
+  <Nav />
+  <main class="mx-auto max-w-3xl px-6 pt-28 pb-20">
+    <a
+      href="/#projects"
+      class="inline-flex items-center gap-2 text-zinc-500 hover:text-accent transition-colors text-sm font-mono mb-8"
+    >
+      ← 返回项目列表
+    </a>
+
+    <header class="mb-10 pb-8 border-b border-zinc-800">
+      <div class="font-mono text-accent text-xs tracking-widest mb-3">
+        {project.data.company} · {project.data.date}
+      </div>
+      <h1 class="text-3xl font-bold text-white mb-4">{project.data.title}</h1>
+      <p class="text-zinc-400 text-lg leading-relaxed mb-6">{project.data.summary}</p>
+      <div class="flex flex-wrap gap-2">
+        {project.data.tags.map((tag) => (
+          <span class="text-xs bg-zinc-900 border border-zinc-700 text-zinc-400 px-3 py-1 rounded-full font-mono">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </header>
+
+    <article class="prose prose-invert prose-zinc max-w-none
+      prose-headings:text-white prose-headings:font-semibold
+      prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-4
+      prose-h3:text-base prose-h3:text-zinc-300
+      prose-p:text-zinc-400 prose-p:leading-relaxed
+      prose-li:text-zinc-400
+      prose-strong:text-zinc-200
+      prose-code:text-accent prose-code:bg-zinc-900 prose-code:px-1 prose-code:rounded
+    ">
+      <Content />
+    </article>
+  </main>
+</BaseLayout>
