@@ -22,7 +22,7 @@ const projects = allProjects.sort((a, b) => a.data.order - b.data.order);
           {projects.map((project) => (
             <ProjectCard
               title={project.data.title}
-              id={project.id}
+              id={project.id.replace(/\.md$/, '')}
               date={project.data.date}
               company={project.data.company}
               tags={project.data.tags}
