@@ -4,13 +4,21 @@ import { metrics } from '../data/metrics';
 
 const heroEntries = await getCollection('hero');
 const hero = heroEntries[0];
+
+// 计算工作年数（从2018年开始）
+const startYear = 2018;
+const currentYear = new Date().getFullYear();
+const years = currentYear - startYear;
+
+// 替换占位符
+const tagline = hero.data.tagline.replace('{years}', years.toString());
 ---
 
 <section class="pt-32 pb-20 px-6">
   <div class="mx-auto max-w-5xl">
     <div class="mb-3 font-mono text-accent text-sm tracking-widest">// {hero.data.title}</div>
     <h1 class="text-3xl sm:text-5xl font-bold text-white mb-4 leading-tight">
-      {hero.data.tagline}
+      {tagline}
     </h1>
     <p class="text-xl text-zinc-400 mb-10 max-w-2xl">
       {hero.data.description}
