@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { metrics } from '../data/metrics';
 
 const heroEntries = await getCollection('hero');
 const hero = heroEntries[0];
@@ -14,7 +15,7 @@ const hero = heroEntries[0];
     <p class="text-xl text-zinc-400 mb-10 max-w-2xl">
       {hero.data.description}
     </p>
-    <div class="flex gap-4 flex-wrap">
+    <div class="flex gap-4 flex-wrap mb-8">
       <a
         href="/#projects"
         class="px-6 py-3 bg-accent text-zinc-950 font-semibold rounded hover:bg-green-300 transition-colors text-sm"
@@ -29,10 +30,13 @@ const hero = heroEntries[0];
         下载简历 PDF
       </a>
     </div>
-    <div class="mt-12 flex gap-6 text-zinc-600 text-sm font-mono">
-      <span>贝壳找房 · 2021-至今</span>
-      <span>·</span>
-      <span>360安全 · 2018-2021</span>
+    <div class="flex flex-wrap gap-x-8 gap-y-4 text-zinc-600 text-sm font-mono border-t border-zinc-800 pt-6">
+      {metrics.map((metric) => (
+        <div class="flex items-baseline gap-2">
+          <span class="text-accent text-lg font-semibold">{metric.value}</span>
+          <span>{metric.label}</span>
+        </div>
+      ))}
     </div>
   </div>
 </section>
