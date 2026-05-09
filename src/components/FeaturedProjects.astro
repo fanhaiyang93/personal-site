@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects');
+const featuredProjects = allProjects
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="featured" class="py-20 px-6">
+  <div class="mx-auto max-w-5xl">
+    <div class="font-mono text-accent text-sm tracking-widest mb-2">// 精选</div>
+    <h2 class="text-2xl font-bold text-white mb-10">精选项目</h2>
+
+    <div class="space-y-6">
+      {featuredProjects.map((project) => (
+        <a
+          href={`/projects/${project.id.replace(/\.md$/, '')}`}
+          class="block p-6 bg-zinc-900/50 border border-zinc-800 rounded-lg hover:border-accent transition-colors group"
+        >
+          <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+            <div>
+              <h3 class="text-xl font-semibold text-white group-hover:text-accent transition-colors">
+                {project.data.title}
+              </h3>
+              <p class="text-zinc-500 text-sm font-mono mt-1">
+                {project.data.company} · {project.data.date}
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {project.data.tags.map((tag) => (
+                <span class="px-2 py-1 bg-zinc-800 text-zinc-400 text-xs rounded">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <p class="text-zinc-400 mb-4">{project.data.summary}</p>
+
+          <div class="text-accent text-sm font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+            查看详情
+            <span>→</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
