@@ -5,14 +5,7 @@ import Hero from '../components/Hero.astro';
 import ExperienceTimeline from '../components/ExperienceTimeline.astro';
 import FeaturedProjects from '../components/FeaturedProjects.astro';
 import SkillSection from '../components/SkillSection.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import { getCollection } from 'astro:content';
 import { contact } from '../data/contact';
-
-const allProjects = await getCollection('projects');
-const nonFeaturedProjects = allProjects
-  .filter((p) => !p.data.featured)
-  .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout title="范海洋 · 数仓架构师">
@@ -22,26 +15,6 @@ const nonFeaturedProjects = allProjects
     <ExperienceTimeline />
     <FeaturedProjects />
     <SkillSection />
-
-    <section id="projects" class="py-20 px-6 border-t border-zinc-800">
-      <div class="mx-auto max-w-5xl">
-        <div class="font-mono text-accent text-sm tracking-widest mb-2">// 更多项目</div>
-        <h2 class="text-2xl font-bold text-white mb-10">其他项目</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {nonFeaturedProjects.map((project) => (
-            <ProjectCard
-              title={project.data.title}
-              id={project.id.replace(/\.md$/, '')}
-              date={project.data.date}
-              company={project.data.company}
-              tags={project.data.tags}
-              summary={project.data.summary}
-              featured={project.data.featured}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
 
     <footer class="py-12 px-6 border-t border-zinc-800 text-center text-zinc-600 text-sm font-mono">
       <p>{contact.email} · {contact.phone}</p>

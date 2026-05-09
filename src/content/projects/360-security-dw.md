@@ -4,7 +4,7 @@ date: "2018.07-2021.05"
 company: 360安全科技
 tags: [Hive, Spark, ClickHouse, 数仓建设]
 summary: 参与并主导安全数据仓库从0到1建设，覆盖终端安全、网络安全等核心主题，支撑亿级设备数据的分析处理。
-featured: false
+featured: true
 order: 6
 ---
 

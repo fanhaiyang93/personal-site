@@ -4,7 +4,7 @@ date: "2023.06-2023.12"
 company: 贝壳找房
 tags: [StarRocks, ClickHouse, 报表, OLAP]
 summary: 建设业财一体化报表体系，统一经营与财务视角的核心指标，支撑各事业部月度经营分析会。
-featured: false
+featured: true
 order: 5
 ---
 
