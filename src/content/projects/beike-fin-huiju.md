@@ -4,7 +4,7 @@ date: "2022.10-2023.09"
 company: 贝壳找房
 tags: [Hive, Spark, 数仓架构, 业财融合]
 summary: 主导财务主题域数仓建设，覆盖业财融合、核算、资金、税务、EPM 5个主题，对接多个下游财务分析系统。
-featured: false
+featured: true
 order: 4
 ---
 
