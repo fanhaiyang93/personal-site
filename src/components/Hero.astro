@@ -1,16 +1,18 @@
 ---
+import { getCollection } from 'astro:content';
+
+const heroEntries = await getCollection('hero');
+const hero = heroEntries[0];
 ---
+
 <section class="pt-32 pb-20 px-6">
   <div class="mx-auto max-w-5xl">
-    <div class="mb-3 font-mono text-accent text-sm tracking-widest">// 数据仓库架构师</div>
+    <div class="mb-3 font-mono text-accent text-sm tracking-widest">// {hero.data.title}</div>
     <h1 class="text-3xl sm:text-5xl font-bold text-white mb-4 leading-tight">
-      范海洋
+      {hero.data.tagline}
     </h1>
-    <p class="text-xl text-zinc-400 mb-2 max-w-2xl">
-      8年数据仓库研发经验，主导企业级人力与财务主题域数据仓库从0到1建设。
-    </p>
-    <p class="text-zinc-500 mb-10 max-w-2xl">
-      专注数仓架构、大规模数据处理与 AI+数据融合，构建覆盖数据开发全流程的 Agent/MCP 工具体系。
+    <p class="text-xl text-zinc-400 mb-10 max-w-2xl">
+      {hero.data.description}
     </p>
     <div class="flex gap-4 flex-wrap">
       <a
